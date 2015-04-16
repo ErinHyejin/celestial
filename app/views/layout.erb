@@ -15,23 +15,9 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title>Welcome to our Bitly</title>
+  <title>Welcome to Celestial</title>
 </head>
 <body>
-  <div class="login_nav">
-    <%if !logged_in? %>
-      <button><a href="/login">Login</a></button>
-    <% else %>
-    <% # Ask Teacher!!! %>
-    <% @logged_in_user = User.where(id: session[:user_id]).first %>
-      Logged in as: <%= @logged_in_user.name %><br>
-      <button><a href="/logout">Logout</a></button>
-    <% end %>
-  </div>
-
-  <div class="container">
-    <h1>Erin and Deb's Bitly!</h1>
-  </div>
   <%= yield %>
 </body>
 </html>
