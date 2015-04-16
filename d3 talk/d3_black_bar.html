@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>D3 tutorial</title>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+
+</head>
+<body>
+  <!-- <p>This is a paragraph</p> -->
+  <!-- <h3>Students' Frustration Scale at DBC From Week 1 ~ 7<h3> -->
+  <script>
+    var dataArray = [10, 40, 30, 40, 90, 85, 75];
+    var width = 500;
+
+    var canvas = d3.select("body")
+                .append("svg")
+                .attr("height", 800)
+                .attr("width", 1000);
+
+    var bars = canvas.selectAll("rect")
+              .data(dataArray)
+              .enter()
+                .append("rect")
+                .attr("width", function(d) {return d * 10;})
+                .attr('height', 20)
+                .attr('y', function(d, i) {return i*40});
+
+
+  </script>
+</body>
+</html>

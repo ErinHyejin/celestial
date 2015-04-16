@@ -1,0 +1,17 @@
+<div class="container">
+  <form action="/urls" method="post">
+    Enter a long url:
+    <input type="text" name="original" size=60>
+    <input type="submit" value="get a short url">
+  </form>
+</div>
+
+<div class="container">
+  <ul>
+  <% @urls.each do |url| %>
+  <li>
+    <%= url.original%> <a href="http://<%= url.original %>"><%= url.url_alias %></a>
+  </li>
+  <% end %>
+</ul>
+</div>
