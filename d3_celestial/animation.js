@@ -1,28 +1,8 @@
-<!DOCTYPE html>
-<html>
+    // var mainCanvas = document.getElementById("map-canvas");
+    //     var mainContext = mainCanvas.getContext('2d');
 
-<head>
-<title>Simple Canvas Example</title>
-<style>
-canvas {
-    border: 3px #CCC solid;
-}
-</style>
-</head>
-
-<body>
-<div id="container">
-    <canvas id="myCanvas" height="450" width="450"></canvas>
-</div>
-<script>
-    //
-
-
-    var mainCanvas = document.getElementById("myCanvas");
-        var mainContext = mainCanvas.getContext('2d');
-
-        var canvasWidth = mainCanvas.width;
-        var canvasHeight = mainCanvas.height;
+        // var canvasWidth = mainCanvas.width;
+        // var canvasHeight = mainCanvas.height;
 
         var angle = 0;
         var longitude = 10;
@@ -57,9 +37,3 @@ canvas {
             requestAnimationFrame(drawCircle);
         }
         drawCircle();
-
-</script>
-</body>
-</html>
-
-<!-- REFERENCE : http://www.kirupa.com/html5/creating_simple_html5_canvas_animation.htm -->
