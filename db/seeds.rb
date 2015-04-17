@@ -1,31 +1,10 @@
-require 'open-uri'
-require 'json'
+Meteorite.delete_all
+file_to_load = File.dirname(__FILE__) + "/meteorite_landings.csv"
 
-# sample
- # "id": "1",
- #    "mass": "21",
- #    "nametype": "Valid",
- #    "geolocation": {
- #      "needs_recoding": false,
- #      "longitude": "6.08333",
- #      "latitude": "50.775"
- #    },
- #    "recclass": "L5",
- #    "fall": "Fell",
- #    "name": "Aachen",
- #    "year": "1880-01-01T00:00:00",
- #    "reclong": "6.083330",
- #    "reclat": "50.775000"
-
-json_meteorites = ""
-
-open("https://data.nasa.gov/resource/gh4g-9sfh.json") do |all_meteorites|
-  all_meteorites.each_line {|individual_meteorite| json_meteorites << individual_meteorite}
-end
-
-hash_meteorites = JSON.parse(json_meteorites)
-
-hash_meteorites.map!{|meteorite_args| meteorite_args.delete_if{|key, value| key == "geolocation" || key == "id"}}
-hash_meteorites.each do |meteorite_args|
-  meteorite = Meteorite.create(meteorite_args)
+File.open(file_to_load) do |meteorites|
+  meteorites.read.each_line do |meteorite|
+    name, nametype, recclass, mass, fall, year, id, reclat, reclong, geoLocation = meteorite.chomp.split(",")
+    Meteorite.create!(name: name, nametype: nametype, recclass: recclass, mass: mass,
+      fall: fall, year: year, reclat: reclat, reclong: reclong)
+  end
 end
